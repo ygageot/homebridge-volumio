@@ -1,0 +1,19 @@
+{
+  "name": "homebridge-volumio",
+  "version": "0.0.1",
+  "license": "ISC",
+  "description": "Homebridge plugin to control Volumio device",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": {
+    "name": "Yves Gageot"
+  },
+  "dependencies": {
+    "request": "^2.65.0"
+  }
+}

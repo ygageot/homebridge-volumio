@@ -32,6 +32,13 @@ VOLUMIO.prototype = {
     },
 
     getServices: function () {
+        this.log("Creating information!");
+        var informationService = new Service.AccessoryInformation();
+        informationService
+            .setCharacteristic(Characteristic.Manufacturer, "Volumio.org")
+            .setCharacteristic(Characteristic.Model, "Volumio")
+            .setCharacteristic(Characteristic.SerialNumber, "0-0-0");
+
         this.log("Creating speaker!");
         var speakerService = new Service.Speaker(this.name);
 
@@ -47,7 +54,7 @@ VOLUMIO.prototype = {
             .on("get", this.getVolume.bind(this))
             .on("set", this.setVolume.bind(this));
 
-        return [speakerService];
+        return [informationService, speakerService];
     },
 
     getMuteState: function (callback) {

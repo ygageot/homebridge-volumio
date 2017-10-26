@@ -18,10 +18,11 @@ function VOLUMIO(log, config) {
 
     this.volume = {};
     this.mute = {};
-
-    this.volume.setUrl = "http://volumio.local/api/v1/commands/?cmd=volume&volume=%s";
-    this.mute.onUrl = "http://volumio.local/api/v1/commands/?cmd=volume&volume=mute";
-    this.mute.offUrl = "http://volumio.local/api/v1/commands/?cmd=volume&volume=unmute";
+  
+    var url0 = "http://" + this.name.toLowerCase() + ".local/api/v1/commands/?";
+    this.volume.setUrl = url0 + "cmd=volume&volume=%s";
+    this.mute.onUrl = url0 + "cmd=volume&volume=mute";
+    this.mute.offUrl = url0 + "cmd=volume&volume=unmute";
 }
 
 VOLUMIO.prototype = {

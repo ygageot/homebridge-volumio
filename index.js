@@ -19,7 +19,7 @@ function VOLUMIO(log, config) {
     this.volume = {};
     this.mute = {};
   
-    var url0 = "http://" + this.name.toLowerCase() + ".local/api/v1/commands/?";
+    let url0 = "http://" + this.name.toLowerCase() + ".local/api/v1/commands/?";
     this.volume.setUrl = url0 + "cmd=volume&volume=%s";
     this.mute.onUrl = url0 + "cmd=volume&volume=mute";
     this.mute.offUrl = url0 + "cmd=volume&volume=unmute";
@@ -69,8 +69,8 @@ VOLUMIO.prototype = {
                 callback(new Error("getMuteState() returned http error " + response.statusCode));
             }
             else {
-                var obj = JSON.parse(body);
-                var muted = (obj.mute == 'true');
+                let obj = JSON.parse(body);
+                let muted = (obj.mute == 'true');
                 this.log("Speaker is currently %s", muted? "MUTED": "NOT MUTED");
                 callback(null, muted);
             }
@@ -78,7 +78,7 @@ VOLUMIO.prototype = {
     },
 
     setMuteState: function (muted, callback) {
-        var url = muted? this.mute.onUrl: this.mute.offUrl;
+        let url = muted? this.mute.onUrl: this.mute.offUrl;
 
         this._httpRequest(url, "", "GET", function (error, response, body) {
             if (error) {
@@ -108,8 +108,8 @@ VOLUMIO.prototype = {
                 callback(new Error("getVolume() returned http error " + response.statusCode));
             }
             else {
-                var obj = JSON.parse(body);
-                var volume = parseInt(obj.volume);
+                let obj = JSON.parse(body);
+                let volume = parseInt(obj.volume);
                 this.log("Speaker's volume is at  %s %", volume);
 
                 callback(null, volume);
@@ -118,7 +118,7 @@ VOLUMIO.prototype = {
     },
 
     setVolume: function (volume, callback) {
-        var url = this.volume.setUrl.replace("%s", volume);
+        let url = this.volume.setUrl.replace("%s", volume);
 
         this._httpRequest(url, "", "GET", function (error, response, body) {
             if (error) {
